@@ -67,6 +67,8 @@
 - `~/.bashrc` or `~/.zshrc`  
   User shell configuration files.
 
+- `~/.ssh`  
+  Folder containing SSH keys and config (e.g., `id_rsa`, `id_rsa.pub`, `config`, `known_hosts`).
 ---
 
 ##  Quick Tips
