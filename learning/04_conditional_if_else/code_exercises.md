@@ -1,7 +1,7 @@
 #### ~ Check if the given number is odd or even
 A number is even if it is divisible by 2 (i.e., num % 2 == 0). Otherwise, it is odd.
 ```
-num = 7
+num = int(input("Please enter a number to check odd or even: "))
 if num % 2 == 0:
     print("Even")
 else:
@@ -10,7 +10,7 @@ else:
 #### ~ Check if the given number is zero, positive or negative
  We check if the given number is equal to zero, then obviously the number is zero, if the number is greater than zero, the number is positive and if both the condition are not met, which implies that is less than 0.
  ```
-num = -5
+num = int(input("Please enter a number to check +ve, -ve or 0: "))
 if num > 0:
     print("Positive")
 elif num == 0:
@@ -21,8 +21,8 @@ else:
  #### ~ Largest of two numbers
  By intuition, we use if condition, if one number is greater than the second (a > b), then should print a is greater.
   ```
-a = 10
-b = 20
+a = int(input("Please enter first number: "))
+b = int(input("Please enter second number: "))
 if a > b:
     print("a is greater")
 else:
@@ -31,9 +31,9 @@ else:
 #### ~ Largest of three numbers
 Use and to compare multiple values.
 ```
-a = 10
-b = 30
-c = 20
+a = int(input("Please enter first number: "))
+b = int(input("Please enter second number: "))
+c = int(input("Please enter third number: "))
 if a > b and a > c:
     print("a is largest")
 elif b > c:
@@ -45,7 +45,7 @@ else:
 Use the logical and operator.
 Concepts used: Logical operator and
 ```
-num = 15
+num = int(input("Please enter a number t check divisibility by 3 & 5: "))
 if num % 3 == 0 and num % 5 == 0:
     print("Divisible by both 3 and 5")
 else:
@@ -54,7 +54,7 @@ else:
 #### ~ Grading System
 Use elif to define ranges.
 ```
-score = 85
+score = int(input("Please enter a number between 0 -100 to check grade: "))
 if score >= 90:
     print("Grade A")
 elif score >= 75:
@@ -76,7 +76,7 @@ A year is a leap year if:
 year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
 Concepts used: Nested if-else, %, logical operators
 ```
-year = 2024
+year = int(input("Please enter a year to check leap year: "))
 if year % 4 == 0:
     if year % 100 != 0 or year % 400 == 0:
         print("Leap Year")
@@ -89,7 +89,7 @@ else:
 
 Concepts used: Ternary operator
 ```
-marks = 45
+marks = int(input("Please enter a number less than 100: "))
 result = "Pass" if marks >= 40 else "Fail"
 print(result)
 ```
@@ -97,7 +97,7 @@ print(result)
 If the number is negative, convert it to positive.
 Concepts used: if-else
 ```
-num = -10
+num = int(input("Please enter a negative number: "))
 if num < 0:
     num = -num
 print("Absolute value is", num)
@@ -111,7 +111,7 @@ Write a Python program that takes an integer num and prints:
   - The number itself, if it is not divisible by 3 or 5
    
 ```
-num = 15
+num = int(input("Please enter a number: "))
 if num % 3 == 0 and num % 5 == 0:
     print("FizzBuzz")
 elif num % 3 == 0:

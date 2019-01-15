@@ -9,7 +9,6 @@ print("Distance in miles:", miles)
 ### ~ Calculation of speed
 You are given distance and time, and have to calculate its speed. The formuala is speed = distance/time
 ```
-Speed = Distance / Time
 distance = float(input("Enter distance (in km): "))
 time = float(input("Enter time (in hours): "))
 speed = distance / time ## for time 0, raises zero division error
