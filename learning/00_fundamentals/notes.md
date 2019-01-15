@@ -44,3 +44,40 @@ so you'll often need to convert it for numeric operations
 age = int(input("Enter your age: "))
 print("Next year, you will be", age + 1)
 ```
+### Comments
+ - Comments help explain code for ownself and others.
+ - Comment is ignored by Python interpreter.  
+
+Python supports two types of comments:
+1. Single-line Comment
+Starts with a # symbol  
+Everything after # on that line is ignored by Python
+
+```
+# This is a single-line comment
+x = 5  # This sets x to 5
+```
+
+2. Multi-line Comment (Docstring or Block-style)  
+You can use triple quotes ''' ... ''' or """ ... 
+```
+"""  
+Commonly used for documentation, not just comments
+
+'''
+This is a multi-line comment
+that spans multiple lines.
+'''
+```
+Or:
+```
+"""
+This is another way
+to write multi-line comments.
+"""
+```
+
+Notes:  
+ - Use comments to describe logic, especially complex parts.  
+ - Avoid over-commenting obvious lines (x = 5 # Set x to 5 is unnecessary).  
+ - Keep comments short and meaningful.
