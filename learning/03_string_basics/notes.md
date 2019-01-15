@@ -56,7 +56,7 @@ print(text[::-1])  # dlroW ,olleH (Reverse strings)
 | `lower()`        | `"HELLO".lower()` → `"hello"`    | Converts all characters to lowercase        |
 | `upper()`        | `"hello".upper()` → `"HELLO"`    | Converts all characters to uppercase        |
 | `capitalize()`   | `"hello".capitalize()` → `"Hello"` | Capitalizes first character only           |
-| `title()`        | `"hello world".title()` → `"Hello World"` | Capitalizes first character of each word                 |
+| `title()`        | `"hello world".title()` → `"Hello World"` | Capitalizes first character of each word, apostrophes may not be handled well.                 |
 | `swapcase()`     | `"Hello".swapcase()` → `"hELLO"` | Swaps case of all characters                |
 
 ---
