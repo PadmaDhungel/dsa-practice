@@ -73,6 +73,7 @@ print(text[::-1])  # dlroW ,olleH (Reverse strings)
 | `isupper()`      | `"ABC".isupper()` → `True`         | Returns True if all letters are uppercase         |
 | `isspace()`      | `"   ".isspace()` → `True`         | Checks if all characters are whitespace     |
 
+* white space character includes space(' '), tab( '\t'), Newline ('\n'), Carriage return ('\r'), Vertical tab ('\v'), Form feed ('\f') *
 ---
 
 ### Whitespace and Trimming
