@@ -103,7 +103,6 @@ while True:
         break
 ```
 ### Guess the Number Game
-
 Write a Python program to let the user guess a randomly generated number between 1 and 20.
 Generate the number using random.randint(1, 20).
 - Repeatedly prompt the user to guess.
@@ -129,8 +128,50 @@ while guess != number:
         print("Congratulations! You guessed it.")
 ```
 Simple Rock-Paper-Scissors (1 Round)
+### Simple Banking Simulator
+Write a Python program that simulates simple banking actions:
+- Start with a balance of 0.
+- Repeatedly show a menu with options to:  
+     Deposit money &nbsp; Withdraw money &nbsp; Check balance  &nbsp; Exit  
+- For deposit/withdraw, prompt for amount and update balance accordingly.
+- Show an error for invalid inputs or if withdrawal amount is more than balance.
+- Keep running until the user chooses to exit.
 
-User plays one round against computer.
+```
+balance = 0
+
+while True:
+    print("1. Deposit")
+    print("2. Withdraw")
+    print("3. Check Balance")
+    print("4. Exit")
+
+    choice = input("Enter your choice (1-4): ")
+
+    if choice == '1':
+        amount = float(input("Enter amount to deposit: "))
+        if amount > 0:
+            balance += amount
+            print(f"Deposited: {amount}")
+        else:
+            print("Invalid amount.")
+    elif choice == '2':
+        amount = float(input("Enter amount to withdraw: "))
+        if 0 < amount <= balance:
+            balance -= amount
+            print(f"Withdrew: {amount}")
+        else:
+            print("Insufficient funds or invalid amount.")
+    elif choice == '3':
+        print(f"Current balance: {balance}")
+    elif choice == '4':
+        print("Thanks for using the Banking Simulator!")
+        break
+    else:
+        print("Invalid choice.")
+
+```
+### User plays one round against computer.
 ```
 import random
 
@@ -156,4 +197,88 @@ elif (user_choice == "rock" and computer_choice == "scissors") or \
     print("You win!")
 else:
     print("You lose!")
+```
+### Two-Player Dice Game
+Write a Python program to simulate a simple two-player dice game using only basic programming concepts: loops, conditionals, variables, and user input. Do not use functions (def) or advanced Python features.
+<details>
+<summary>Game rules</summary>
+
+- The game is played between two players.  
+- On a player's turn, they roll a six-sided die (values from 1 to 6).  
+- If the player rolls a 1, their turn ends immediately and they earn 0 points for that turn.
+- If they roll any other number (2–6), that number is added to their turn score.
+- After each roll (except when it is 1), the player can choose to:  
+    - Roll again, or
+    - Hold, which ends their turn and adds the turn score to their total score.
+- The game continues until one player reaches or exceeds 30 points, and that player is declared the winner.
+</details>
+<details>
+<summary>Requirements</summary>
+
+Your program must:
+Use only:
+- `while` loops  
+- `if`, `else`, and `elif` statements  
+- Variables  
+- `print()` and `input()` functions  
+- `random.randint()` from the `random` module  
+Do not use:
+- Any custom functions (`def`)  
+- Lists, dictionaries, classes, or any other imports besides `random`  
+
+Additional Requirements:
+- Alternate turns between Player 1 and Player 2  
+- Display the current score after each turn  
+- Display a final message announcing the winner
+</details>
+
+```
+import random
+
+player1_score = 0
+player2_score = 0
+score_to_win = 30  # You can change the target score
+current_player = 1
+
+print("Welcome to the Two-Player Dice Game!")
+print("First player to reach", score_to_win, "points wins!\n")
+
+while player1_score < score_to_win and player2_score < score_to_win:
+    print("Player", current_player, "'s turn")
+
+    turn_score = 0
+    rolling = True
+
+    while rolling:
+        roll = random.randint(1, 6)
+        print("You rolled a", roll)
+
+        if roll == 1:
+            print("Oops! You lose your turn.")
+            turn_score = 0
+            rolling = False
+        else:
+            turn_score += roll
+            print("Turn score:", turn_score)
+            choice = input("Do you want to roll again? (y/n): ")
+
+            if choice != "y":
+                rolling = False
+
+    if current_player == 1:
+        player1_score += turn_score
+        print("Player 1 total score:", player1_score)
+        current_player = 2
+    else:
+        player2_score += turn_score
+        print("Player 2 total score:", player2_score)
+        current_player = 1
+
+    print("------------------------------")
+
+if player1_score >= score_to_win:
+    print(" Player 1 wins with", player1_score, "points!")
+else:
+    print(" Player 2 wins with", player2_score, "points!")
+
 ```
