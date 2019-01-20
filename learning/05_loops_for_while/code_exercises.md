@@ -265,45 +265,6 @@ while b != 0:
     b = a % b
 print("GCD is:", a)
 ```
-##  String-Based Problems
-
-### ~ Count vowels and consonants in a string
-```
-input_str = input("Enter a string: ").lower()
-vowels = "aeiou"
-vowel_count = 0
-consonant_count = 0
-for ch in input_str:
-    if ch.isalpha():  # only count letters
-        if ch in vowels:
-            vowel_count += 1
-        else:
-            consonant_count += 1
-
-print("Vowels:", vowel_count)
-print("Consonants:", consonant_count)
-```
-### ~ Reverse a string using loop (don’t use slicing)
-```
-input_str = input("Enter a string: ")
-reversed_str = ""
-for i in range(len(input_str) - 1, -1, -1):
-    reversed_str += input_str[i]
-print("Reversed string:", reversed_str)
-
-```
-### ~ Check if a string is a palindrome
-Input: "level" → Output: True
-```
-string = input("Please enter word to check palindrome:")
-n = len(string)
-match = True
-for i in range(n // 2):
-    if string[i] != string[n - i - 1]:
-        match=False
-        break #stops checking further
-print(match)
-```
 ### ~ Find sum and average of N numbers
 ```
 n = int(input("Enter how many numbers: "))
@@ -352,4 +313,82 @@ if 0< div1 < 16 and 0 < div2 < 16:
             print(i)
 else:
     print("the divisors are greter than 15)
+```
+### ~ Convert Roman numeral into numbers
+<details>
+<summary></summary>
+
+- Basic Values: I=1, V=5, X=10, L=50, C=100, D=500, M=1000.   
+I- f a numeral is followed by one of equal or lesser value, add its value.
+Example: VIII = 5 + 1 + 1 + 1 = 8.  
+- If a smaller numeral precedes a larger numeral, subtract the smaller from the larger.
+Example: IV = 5 - 1 = 4.  
+- Only I, X, and C can be subtracted, and only from the next two higher numerals:  
+  - I before V (5) and X (10)  
+  - X before L (50) and C (100)  
+  - C before D (500) and M (1000)  
+  - V, L, and D are never subtracted. pairs like IL, IC, VX, etc., are invalid
+- No numeral can be repeated more than three times in a row (e.g., III is valid; IIII is not).
+</details>
+
+```
+roman = input("Please enter first main word: ")
+
+result = 0
+i = 0
+while i < len(roman):
+    #current value
+    ch = roman[i]
+    if ch == 'I':
+        s1 = 1
+    elif ch == 'V':
+        s1 = 5
+    elif ch == 'X':
+        s1 = 10
+    elif ch == 'L':
+        s1 = 50
+    elif ch == 'C':
+        s1 = 100
+    elif ch == 'D':
+        s1 = 500
+    elif ch == 'M':
+        s1 = 1000
+    else:
+        s1 = 0
+    #next value
+    if i+1 < len(roman):
+        ch_next = roman[i+1]
+        if ch_next == 'I':
+            s2 = 1
+        elif ch_next == 'V':
+            s2 = 5
+        elif ch_next == 'X':
+            s2 = 10
+        elif ch_next == 'L':
+            s2 = 50
+        elif ch_next == 'C':
+            s2 = 100
+        elif ch_next == 'D':
+            s2 = 500
+        elif ch_next == 'M':
+            s2 = 1000
+        else:
+            s2 = 0
+        # compare current and next
+        if s1 < s2:
+            if not ( # avoiding invalid cases like VX, LC, DM
+                (s1 == 1 and (s2 == 5 or s2 == 10)) or
+                (s1 == 10 and (s2 == 50 or s2 == 100)) or
+                (s1 == 100 and (s2 == 500 or s2 == 1000))
+            ):
+                break
+            result += (s2 - s1)
+            i += 1 # skip next char
+        else:
+            result += s1
+    else:
+        result += s1
+    i += 1
+        
+print(result)
 ```
