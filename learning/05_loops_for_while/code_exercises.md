@@ -314,6 +314,19 @@ if 0< div1 < 16 and 0 < div2 < 16:
 else:
     print("the divisors are greter than 15)
 ```
+### ~ Repeated Digit Sum Until Single Digit
+Input: 5674 → Output: 5+6+7+4 → 22 → 2+2 =4
+```
+n = int(input("Please enter the number: "))
+sum = 0
+while n > 0 or sum > 9:
+    if n == 0: # if n reduces to 0 but sum has more than 2 digit
+        n = sum
+        sum = 0
+    sum += n % 10
+    n //= 10
+print(sum)
+```
 ### ~ Convert Roman numeral into numbers
 <details>
 <summary></summary>
