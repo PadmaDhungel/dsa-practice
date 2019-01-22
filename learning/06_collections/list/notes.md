@@ -42,6 +42,12 @@ my_list = [
 | Dictionary (items) | `list({'a': 1, 'b': 2}.items())`| `[('a', 1), ('b', 2)]`  | Useful when key-value pairs are needed                        |
 
 ## Accessing List Elements
+When we want to go through each element in the list and may be do any operation like modifying or so forth, you use a `for` statement to get each item one-by-one.
+```
+my_list = [1, 2, 3, 4, 5]
+for item in my_list:
+    print(item)
+```
 ### Indexing
 Lists are zero-indexed, meaning the first element is at index 0.  
 > for the list: `fruits = ["apple", "banana", "cherry", "date"]`
