@@ -1,5 +1,14 @@
-#### ~ Check if a String is Empty
+#### Good Practice: Spot the Specific Case Early -Fail Fast or Pass First 
+When writing conditions, put the most obvious or specific case first to make your logic clear and easy to maintain.
+- Use Fail Fast when you need to catch errors or invalid inputs early, especially if there are multiple or complex failure checks.
+Examples: empty string, missing password symbols, invalid email format.
+- Use Pass First when the success condition is simple, clear, and easy to check, and you want to emphasize the positive case.
+Examples: word starts with a capital letter, two words match (ignoring case), string ends with a vowel.  
 
+*This applies whether you’re using multiple if / elif / else blocks or combining conditions with and / or.*
+
+-----------------------------------  
+#### ~ Check if a String is Empty
 ```
 text = input("Enter some text: ")
 if text.strip() == "":
@@ -108,6 +117,33 @@ else:
     print("Words do not match")
 ```
 #### ~ Check if Name Contains a Digit (Invalid Name)
+Check if the username follows common rules used in many registration forms — it must:
+- Contain at least one digit
+- Be made up of only letters and numbers
+- Not include any symbols, spaces, or special characters
+```
+name = input("Enter your name: ")
+if name.isalnum() and not name.isalpha() and not name.isdigit():
+    print("valid name: contains digits")
+else:
+    print("invalid name: must contain digit")
+```
+*isalnum() checks if the string contains only string and number*  
+
+*Not highly favored — the logic is tightly packed and less intuitive due to double negatives. It gives no clear feedback and prevents early rejection, meaning all conditions are evaluated every time.*
+
+```
+name = input("Enter your name: ")
+if not name.isalnum():
+    print("Invalid: contains characters other than  letters or numbers")
+elif name.isalpha() or name.isdigit():
+    print("Invalid: must contain both letters and digits")
+else:
+    print("Valid: contains letters and digits")
+```
+<details>
+<summary>Disallowed method: used generator and for loop</summary>
+
 ```
 name = input("Enter your name: ")
 if any(char.isdigit() for char in name):
@@ -115,6 +151,8 @@ if any(char.isdigit() for char in name):
 else:
     print("Name looks good")
 ```
+</details>
+
 #### ~ Check for 'Forbidden' Word in Text
 ```
 text = input("Enter a sentence: ")
