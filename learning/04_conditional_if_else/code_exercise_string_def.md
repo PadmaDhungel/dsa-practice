@@ -10,11 +10,14 @@ Examples: word starts with a capital letter, two words match (ignoring case), st
 -----------------------------------  
 #### ~ Check if a String is Empty
 ```
+def is_empty(text):
+    if text.strip() == "":
+        return "empty string."
+    else:
+        return f"You entered: {text}"
+
 text = input("Enter some text: ")
-if text.strip() == "":
-    print("empty string.")
-else:
-    print("You entered:", text)
+print(is_empty(text))
 ```
 <details>
 <summary>Caution!! >>></summary>
@@ -27,94 +30,114 @@ If the result is an empty string after stripping, the input was either empty or 
 
 #### ~ Check if a Word Starts with a Capital Letter
 ```
+def cap_start(word):
+    if word[0].isupper():
+        return "capital start"
+    else:
+        return "No capital start"
 word = input("Enter a word: ")
-if word[0].isupper():
-    print("capital start")
-else:
-    print("No capital start")
+print(cap_start(word))
 ```
 alternative : using ASCII (ord()):
 65-A, 66-B,......90-Z
 ```
+def cap_start(word):
+    if 65 <= ord(word[0]) <= 90:
+        return "capital start"
+    else:
+        return "no capital start"
 word = input("Enter a word: ")
-if 65 <= ord(word[0]) <= 90:
-    print("capital start")
-else:
-    print("no capital start")
+print(cap_start(word))
 ```
 #### ~ Check if an Email Ends with .com
 .endswith() - safe, readable and pythonic
 ```
+def email_ends_com(email):
+    if email.endswith(".com"):
+        return "Valid: Ends with .com"
+    else:
+        return "Invalid: Must end with .com"
 email = input("Enter your email: ")
-if email.endswith(".com"):
-    print("Valid: Ends with .com")
-else:
-    print("Invalid: Must end with .com")
+print(email_ends_com(email))
 ```
 alternative: using slicing for .com(-4 from the last)
 ```
+def email_ends_com(email):
+    if email[-4:] == ".com":
+        return "has .com."
+    else:
+        return "Does not have .com."
 email = input("Enter your email: ")
-if email[-4:] == ".com" :
-    print("has .com.")
-else:
-    print("Does not have .com.")
+print(email_ends_com(email))
 ```
 #### ~ Check if String Length is Greater Than 10
 ```
+def len_grt_ten(text):
+    if len(text) > 10:
+        return "Long text"
+    else:
+        return "Short text"
+
 text = input("Enter text: ")
-if len(text) > 10:
-    print("Long text")
-else:
-    print("Short text")
+print(len_grt_ten(text))
 ```
 #### ~ Check if Password Has '@' Symbol
 word.find('@') or @ in word
 ```
+def has_rate(password):
+    if "@" in password:
+        return "Password contains @"
+    else:
+        return "Password must contain @"
 password = input("Enter your password: ")
-if "@" in password:
-    print("Password contains @")
-else:
-    print("Password must contain @")
+print(has_rate(password))
 ```
 alternative: using find('@") and check for > -1 value
 ```
+def has_rate(password):
+    if password.find("@") != -1:
+        return "Password contains @"
+    else:
+        return "Password must contain @"
 password = input("Enter your password: ")
-if password.find("@") != -1:
-    print("Password contains @")
-else:
-    print("Password must contain @")
-
+print(has_rate(password))
 ```
 #### ~ Check for Leading or Trailing Spaces
 ```
+def has_outer_spaces(text):
+    if text != text.strip():
+        return "yes extra spaces"
+    else:
+        return "No extra spaces"
 text = input("Enter a sentence: ")
-if text != text.strip():
-    print("yes extra spaces")
-else:
-    print("No extra spaces")
+print(has_outer_spaces(text))
 ```
 alternative: test for " ", but fails if space is newline or tab and also raises index error, if the string is empty.
 ```
-if text[0] == " " or text[-1] == " ":
-    print("Has leading or trailing spaces")
-else:
-    print("No leading or trailing spaces")
+def has_outer_spaces(text):
+    if text[0] == " " or text[-1] == " ":
+        return "yes extra spaces"
+    else:
+        return "No extra spaces"
 ```
 safer alternative ( with length check)
 ```
-if len(text) > 0 and (text[0].isspace() or text[-1].isspace()):
-    print("Has leading or trailing whitespace")
-else:
-    print("No leading or trailing whitespace")
+def has_outer_spaces(text):
+    if len(text) > 0 and (text[0].isspace() or text[-1].isspace()):
+        return "Has leading or trailing whitespace"
+    else:
+        return "No leading or trailing whitespace"
 ```
 #### ~ Check if Two Words are Same (Ignore Case)
 ```
+def are_words_same(a, b):
+    if a.lower() == b.lower():
+        return "Words match (case-insensitive)"
+    else:
+        return "Words do not match"
 a = input("Enter first word: ")
 b = input("Enter second word: ")
-if a.lower() == b.lower():
-    print("Words match (case-insensitive)")
-else:
-    print("Words do not match")
+print(are_words_same(a, b))
 ```
 #### ~ Check if Name Contains a Digit (Invalid Name)
 Check if the username follows common rules used in many registration forms — it must:
@@ -122,111 +145,135 @@ Check if the username follows common rules used in many registration forms — i
 - Be made up of only letters and numbers
 - Not include any symbols, spaces, or special characters
 ```
+def has_num(name):
+    if name.isalnum() and not name.isalpha() and not name.isdigit():
+        return"valid name: contains digits & string"
+    else:
+        return"invalid name: must contain digit"
 name = input("Enter your name: ")
-if name.isalnum() and not name.isalpha() and not name.isdigit():
-    print("valid name: contains digits")
-else:
-    print("invalid name: must contain digit")
+print(has_num(name))
 ```
 *isalnum() checks if the string contains only string and number*  
 
-*Not highly favored — the logic is tightly packed and less intuitive due to double negatives. It gives no clear feedback and prevents early rejection, meaning all conditions are evaluated every time.*
+*Above solution is Not highly favored — the logic is tightly packed and less intuitive due to double negatives. It gives no clear feedback and prevents early rejection, meaning all conditions are evaluated every time.*
 
 ```
+def has_num(name):
+    if not name.isalnum():
+        return "Invalid: contains characters other than  letters or numbers"
+    elif name.isalpha() or name.isdigit():
+        return "Invalid: must contain both letters and digits"
+    else:
+        return "Valid: contains letters and digits"
 name = input("Enter your name: ")
-if not name.isalnum():
-    print("Invalid: contains characters other than  letters or numbers")
-elif name.isalpha() or name.isdigit():
-    print("Invalid: must contain both letters and digits")
-else:
-    print("Valid: contains letters and digits")
+print(has_num(name))
 ```
 #### ~ Check for 'Forbidden' Word in Text
 ```
+def has_forbidden(text):
+    if "forbidden" in text.lower():
+        return "Inappropriate content found"
+    else:
+        return "Clean sentence"
+
 text = input("Enter a sentence: ")
-if "Forbidden" in text.lower():
-    print("Inappropriate content found")
-else:
-    print("Clean sentence")
+print(has_forbidden(text))
 ```
 #### ~ Take input and check if the first and last character are the same.
 ```
+def same_first_last(text):
+    text = text.strip()  # Remove leading/trailing spaces
+    if len(text) == 0:
+        return "Empty input is not allowed"
+    if text[0] == text[-1]:
+        return "Starts and ends with the same character"
+    else:
+        return "Different start and end characters"
 text = input("Enter a string: ")
-if text[0] == text[-1]:
-    print("Starts and ends with the same character")
-else:
-    print("Different start and end characters")
+print(same_first_last(text))
 ```
 #### ~ Check if a String Has Exactly One Word
 no spaces
 ```
+def is_single_word(text):
+    text = text.strip()
+    if len(text) == 0:
+        return "Empty input is not allowed"
+    if " " in text:
+        return "More than one word"
+    else:
+        return "Exactly one word"
 text = input("Enter a string: ")
-if " " in text:
-    print("More than one word")
-else:
-    print("Exactly one word")
+print(is_single_word(text))
 ```
 #### ~ Check if a String is a Valid Simple Password
 
 Password is valid if:  
 length is at least 8, contains '@' but contains no spaces
 ```
+def is_valid_password(password):
+    if len(password) >= 8 and '@' in password and ' ' not in password:
+        return "Valid password"
+    else:
+        return "Invalid password"
 password = input("Enter password: ")
-if len(password) >= 8 and '@' in password and ' ' not in password:
-    print("Valid password")
-else:
-    print("Invalid password")
+print(is_valid_password(password))
 ```
 *More favoured is the fail fast approach as it stops unnecessary checks and provides clear message or error*
 ```
+def is_valid_password(password):
+    if len(password) < 8:
+        return "Invalid: Password must be at least 8 characters."
+    elif ' ' in password:
+        return "Invalid: Password must not contain spaces."
+    elif '@' not in password:
+        return "Invalid: Password must include '@' symbol."
+    else:
+        return "Valid password"
 password = input("Enter password: ")
-
-if len(password) < 8:
-    print("Invalid: Password must be at least 8 characters.")
-elif ' ' in password:
-    print("Invalid: Password must not contain spaces.")
-elif '@' not in password:
-    print("Invalid: Password must include '@' symbol.")
-else:
-    print("Valid password")
+print(is_valid_password(password))
 ```
 #### ~ Check if a String Ends with a Vowel
 Check if the last character of the input string is a vowel (a, e, i, o, u), case insensitive.
 ```
+def ends_with_vowel(text):
+    if text[-1].lower() in "aeiou":
+        return "Ends with a vowel"
+    else:
+        return "Does not end with a vowel"
 text = input("Enter a string: ")
-if text[-1].lower() in "aeiou":
-    print("Ends with a vowel")
-else:
-    print("Does not end with a vowel")
+print(ends_with_vowel(text))
 ```
 #### ~ Check If Email has atleast '@'and '.'
 ```
+def email_at_dot(email):
+    if "@" in email and "." in email:
+        return "Email looks valid"
+    else:
+        return "Invalid email format"
 email = input("Enter your email: ")
-if "@" in email and "." in email:
-    print("Email looks valid")
-else:
-    print("Invalid email format")
+print(email_at_dot(email))
 ```
 #### ~ Check If Email Format is Roughly Valid
 A roughly valid email here will contain exactly one '@' and at least one '.' placed somewhere after it, with neither character at the start or end. There must be at least two characters between the '@' and the '.', and the email must not contain any spaces.
 
 ```
-email = input("Enter your email: ")
-
-if email.count('@') == 1:
-    pos_at = email.find('@')
-    
-    if pos_at != 0 and pos_at != len(email) - 1:
-        dot_after_at = email.find('.', pos_at + 2)  # dot must come at least 2 positions after '@'
-        
-        if dot_after_at != -1 and ' ' not in email:
-            print("Valid email format")
+def is_roughly_email(email):
+    if email.count('@') == 1:
+        pos_at = email.find('@')
+        if pos_at != 0 and pos_at != len(email) - 1:
+            dot_after_at = email.find('.', pos_at + 2)
+            if dot_after_at != -1 and ' ' not in email:
+                return "Valid email format"
+            else:
+                return "Invalid: Dot missing after '@' or contains spaces"
         else:
-            print("Invalid: Dot missing after '@' or contains spaces")
+            return "Invalid: @ is at the start or end"
     else:
-        print("Invalid: @ is at the start or end")
-else:
-    print("Invalid: Email must contain exactly one @")
+        return "Invalid: Email must contain exactly one @"
+
+email = input("Enter your email: ")
+print(is_roughly_email(email))
 ```
 ## String Handling – Quick Cautions & Best Practices
 
