@@ -136,6 +136,7 @@ To fix this, you put a backslash (\) before these special characters. This tells
 ### String Formatting
 | Method            | Example                    | Description                            |
 | ----------------- | -------------------------- | -------------------------------------- |
+| `f-string`        | `f"Hello, {name}"`               | Modern and preferred                     |
 | `format()` method | `"Hello, {}".format(name)` | Older method for formatting strings    |
 | `%` formatting    | `"Hello, %s" % name`       | Legacy formatting                      |
 ```
@@ -143,6 +144,8 @@ name = "Alice"
 age = 30
 print("Hello, {}".format(name))             # Hello, Alice
 print("Hello, %s" % name)                   # Hello, Alice
+# f-string (recommended)
+print(f"Hello, {name}. You are {age} years old.")   # Hello, Alice. You are 30 years old.
 ```
 ### In Operator for Searching
 The in keyword is a powerful way to search strings or substrings.

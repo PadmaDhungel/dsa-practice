@@ -261,8 +261,9 @@ Means, we can use the second part
 a = int(input("Enter first number: "))
 b = int(input("Enter second number: "))
 while b != 0:
-    a = b
+    temp = b
     b = a % b
+    a = temp
 print("GCD is:", a)
 ```
 ### ~ Find sum and average of N numbers
