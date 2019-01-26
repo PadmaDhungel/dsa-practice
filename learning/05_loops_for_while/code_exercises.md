@@ -98,7 +98,7 @@ Output:
 Code:
 ```
 num = int(input("Please enter number of rows: "))
-for i in range(1, num + 6):
+for i in range(1, num + 1):
     print('*' * i)
 ```
 ### ~ Print a number triangle
