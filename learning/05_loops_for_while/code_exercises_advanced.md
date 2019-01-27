@@ -127,7 +127,6 @@ while guess != number:
     else:
         print("Congratulations! You guessed it.")
 ```
-Simple Rock-Paper-Scissors (1 Round)
 ### Simple Banking Simulator
 Write a Python program that simulates simple banking actions:
 - Start with a balance of 0.
@@ -171,7 +170,8 @@ while True:
         print("Invalid choice.")
 
 ```
-### User plays one round against computer.
+### Simple Rock-Paper-Scissors (1 Round)
+User plays one round against computer.
 ```
 import random
 
